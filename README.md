@@ -9,12 +9,18 @@ Each house is a book page with: author and intro (sourced), up to 10 famous line
 
 ## How a house gets built
 
-1. **Scan Desk** (private, runs only on Phoebe's Mac): `python3 desk/desk.py` → http://127.0.0.1:4600
-   Type a title and messy notes; mark which of your own thoughts may be public. Notes save to the
-   private vault (`~/knowledge/03-inbox/book-scan/`), never to this repo.
-2. Tell Claude **"scan it"**. The `book-scan` skill (`skill/book-scan/SKILL.md`) researches the book,
-   writes `books/<slug>/book.json` + `mindmap.md`, and runs `python3 build.py`.
-3. Preview at http://127.0.0.1:4600/village/, approve, push. GitHub Pages serves `docs/`.
+1. On the site, tap **＋ 加一本书 · Add a book** (`add.html`): title, optional author, a category
+   (pick one, let the bunny decide, or type a new one and it gets created).
+   - **📒 Add with notes** opens a form in Phoebe's **private** vault repo. Notes and private
+     thoughts stay there.
+   - **🌱 Just want to read** opens this repo's sprout form; a GitHub Action plants the sprout in
+     about a minute (only for issues Phoebe opens).
+2. Phoebe tells Claude **"scan"** on her Mac. The `book-scan` skill (`skill/book-scan/SKILL.md`)
+   reads the queue (`scripts/scan_queue.py`), researches the book, writes `books/<slug>/`, draws
+   art for any new category, runs `python3 build.py`, and shows a preview.
+3. After her 👍 it pushes; GitHub Pages serves `docs/`.
+
+Optional local preview / offline input: `python3 desk/desk.py` → http://127.0.0.1:4600 (`/village/`).
 
 ## What is public and what is not
 
@@ -29,7 +35,8 @@ Each house is a book page with: author and intro (sourced), up to 10 famous line
 - 🌱 want-to-read = sprout (not counted) · 🏠 scanned = house (counts toward 400) · every 💭 grows it
 - Houses grow to 2 floors at 2 thoughts, 3 floors at 5
 - Landmarks open at 10 🥐 · 25 ⛲ · 50 📚 · 100 🏛️ · 200 🚂 · 400 🏰
-- Districts: 🌸 Life Lane · 💼 Work Square · 🔭 Mind & Tech Park · 🏯 History Hill · 🍄 Story Woods
+- Districts: 🌸 Life Lane · 💼 Work Square · 🔭 Mind & Tech Park · 🏯 History Hill · 🍄 Story Woods,
+  plus any new category typed on the add page (created automatically by `scripts/village.py`)
 
 ## Build
 

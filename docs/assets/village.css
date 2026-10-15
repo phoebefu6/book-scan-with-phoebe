@@ -228,3 +228,24 @@ a.src { color: var(--mint-700); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ------------------------------------------------------------ add a book */
+.addbig { display: inline-block; margin-top: 14px; font-family: var(--font-display); font-weight: 800; font-size: 20px; text-decoration: none; color: #fff; background: var(--pink-400); padding: 10px 24px; border-radius: 999px; box-shadow: 0 5px 0 var(--pink-700); transition: transform .1s, box-shadow .1s; }
+.addbig:hover { transform: translateY(-2px); }
+.addbig:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--pink-700); }
+.addcard .center { text-align: center; }
+.addcard h1 { color: var(--pink-700); font-size: 34px; }
+.addcard label { display: block; font-family: var(--font-display); font-weight: 700; margin: 14px 0 6px; font-size: 17px; }
+.addcard label small { font-family: var(--font-body); font-weight: 600; color: var(--ink-soft); font-size: 13px; }
+.addcard input, .addcard select { width: 100%; font: inherit; color: var(--ink); background: var(--cream); border: 3px solid var(--pink-200); border-radius: var(--r-md); padding: 10px 14px; outline: none; }
+.addcard input:focus, .addcard select:focus { border-color: var(--pink-400); box-shadow: 0 0 0 4px var(--pink-100); }
+#cn { margin-top: 8px; }
+.addbtns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 10px; }
+.btn { font-family: var(--font-display); font-weight: 800; font-size: 18px; border: none; cursor: pointer; border-radius: var(--r-lg); padding: 12px 14px; color: #fff; background: var(--pink-400); box-shadow: 0 5px 0 var(--pink-700); transition: transform .1s, box-shadow .1s; line-height: 1.3; }
+.btn small { display: block; font-family: var(--font-body); font-weight: 700; font-size: 12.5px; opacity: .9; }
+.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--pink-700); }
+.btn.mint { background: var(--mint-400); color: var(--ink); box-shadow: 0 5px 0 var(--mint-700); }
+.btn.mint:active { box-shadow: 0 1px 0 var(--mint-700); }
+.shake { animation: shake .4s; border-color: var(--pink-700) !important; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+@media (max-width: 640px) { .addbtns { grid-template-columns: 1fr; } }

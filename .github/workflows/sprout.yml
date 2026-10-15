@@ -1,0 +1,37 @@
+name: Plant a sprout
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: village-write
+  cancel-in-progress: false
+jobs:
+  sprout:
+    # Only Phoebe's own issues, only the sprout form. Anyone can open issues on a public repo.
+    if: github.event.issue.user.login == 'phoebefu6' && contains(github.event.issue.labels.*.name, 'sprout')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Add sprout and rebuild
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python3 scripts/add_sprout.py
+          python3 build.py
+      - name: Commit
+        run: |
+          git config user.name "book-scan-bunny"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sprouts.json docs
+          git diff --cached --quiet || git commit -m "🌱 sprout: ${{ github.event.issue.number }}"
+          git push
+      - name: Close issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close ${{ github.event.issue.number }} -R ${{ github.repository }} -c "🌱 Planted! It's in the village now → https://phoebefu6.github.io/book-scan-with-phoebe/"

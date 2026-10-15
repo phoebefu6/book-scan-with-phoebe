@@ -1,0 +1,15 @@
+name: "🌱 Plant a sprout · 想读"
+description: A book Phoebe wants to read. It appears as a sprout in the village (only titles, nothing private).
+title: "🌱 "
+labels: ["sprout"]
+body:
+  - type: input
+    id: book
+    attributes:
+      label: 📖 书名 Book title
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: 🏘️ 街区 Category (optional)

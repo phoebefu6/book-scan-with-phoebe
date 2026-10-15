@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a book · 加一本书</title>
+<meta name="description" content="Phoebe 的读书小镇 · a cute village that grows one house per book">
+<link rel="icon" href="assets/sprites/bunny-hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/village.css">
+
+</head>
+<body>
+
+<main class="page narrow">
+  <a class="back" href="index.html">← 回小镇 Back to town</a>
+  <section class="card addcard">
+    <div class="center"><img class="mascot sm" src="assets/sprites/bunny-write.webp" alt="bunny writing" loading="lazy">
+      <h1>加一本书 <small>Add a book</small></h1>
+      <p class="hint">写下书名，选个街区，然后选一个按钮。</p></div>
+    <form id="addf" onsubmit="return false">
+      <label for="t">📖 书名 <small>Book title</small></label>
+      <input id="t" type="text" required placeholder="比如：被讨厌的勇气" autocomplete="off">
+      <label for="a">✍️ 作者 <small>Author (optional)</small></label>
+      <input id="a" type="text" placeholder="不知道也没关系" autocomplete="off">
+      <label for="c">🏘️ 街区 <small>Category</small></label>
+      <select id="c">
+        <option value="">🐰 让小兔子决定 · let the bunny decide</option>
+        <option value="人生小街">🌸 人生小街 · Life Lane</option><option value="成事广场">💼 成事广场 · Work Square</option><option value="思维科技园">🔭 思维科技园 · Mind &amp; Tech Park</option><option value="历史山丘">🏯 历史山丘 · History Hill</option><option value="故事森林">🍄 故事森林 · Story Woods</option>
+        <option value="__new">✨ 新街区… · a new category</option>
+      </select>
+      <input id="cn" type="text" placeholder="新街区的名字，比如：旅行与美食" hidden autocomplete="off">
+      <div class="addbtns">
+        <button class="btn" id="withnotes" type="button">📒 加书和笔记<small>Add with notes · 笔记私人保存</small></button>
+        <button class="btn mint" id="sprout" type="button">🌱 只是想读<small>Just want to read · 1 分钟出现</small></button>
+      </div>
+      <p class="hint">📒 opens a private form in Phoebe's vault (only she can open it). The house is built next time she tells Claude <b>scan</b>.<br>
+      🌱 opens the village's sprout form; the sprout appears in about a minute.</p>
+    </form>
+  </section>
+</main>
+<script>
+(function(){
+  var $ = function(i){ return document.getElementById(i); };
+  $('c').onchange = function(){ $('cn').hidden = $('c').value !== '__new'; if (!$('cn').hidden) $('cn').focus(); };
+  function cat(){ return $('c').value === '__new' ? $('cn').value.trim() : $('c').value; }
+  function go(base, emoji, withAuthor){
+    var t = $('t').value.trim();
+    if (!t) { $('t').focus(); $('t').classList.add('shake'); setTimeout(function(){ $('t').classList.remove('shake'); }, 500); return; }
+    var q = '&title=' + encodeURIComponent(emoji + ' ' + t) + '&book=' + encodeURIComponent(t) + '&category=' + encodeURIComponent(cat());
+    if (withAuthor) q += '&author=' + encodeURIComponent($('a').value.trim());
+    window.open(base + q, '_blank', 'noopener');
+  }
+  $('withnotes').onclick = function(){ go("https://github.com/phoebefu6/phoebe-reading-vault/issues/new?template=book-scan.yml", '📚', true); };
+  $('sprout').onclick = function(){ go("https://github.com/phoebefu6/book-scan-with-phoebe/issues/new?template=sprout.yml", '🌱', false); };
+})();
+</script>
+<footer class="foot">
+  <p>🐰 Book Scan with Phoebe · 菲比的读书小镇</p>
+  <p class="small">Notes stay private · 笔记原文不公开 · quotes are short and sourced · 引用简短并附来源</p>
+  <p class="small"><a href="https://phoebefu6.github.io/read-with-phoebe/">More book art → read-with-phoebe 读书图集</a></p>
+</footer>
+</body>
+</html>

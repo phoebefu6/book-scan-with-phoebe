@@ -35,6 +35,16 @@ FALLBACK_EMOJI = {"house-life": "🏠", "house-work": "🏪", "house-mind": "�
 e = html.escape
 
 
+def house_sprite(d, st, alt="", cls="", prefix=""):
+    """A district's house at growth stage st. Auto-created districts borrow a base family, hue-shifted,
+    until their own art is drawn."""
+    sid = f"{d['sprite']}-{st}"
+    if not (SPRITES / f"{sid}.webp").exists() and d.get("base"):
+        img = sprite(f"{d['base']}-{st}", alt, cls, prefix)
+        return img.replace("<img ", f'<img style="filter:hue-rotate({int(d.get("hue", 90))}deg)" ', 1)
+    return sprite(sid, alt, cls, prefix)
+
+
 def sprite(sid, alt="", cls="", prefix=""):
     """<img> if the sprite exists, else a big emoji stand-in so the site works before art lands."""
     if (SPRITES / f"{sid}.webp").exists():
@@ -178,14 +188,14 @@ def house_card(b, prefix=""):
     n = b.get("thought_count", len(b.get("thoughts", [])))
     hearts = f'<span class="tc" title="{n} 条想法 thoughts">💭 {n}</span>' if n else ""
     return f"""<a class="house st{st}" href="{prefix}books/{e(b['slug'])}.html">
-  {sprite(f"{d['sprite']}-{st}", b['title'], 'hs')}
+  {house_sprite(d, st, b['title'], 'hs')}
   <span class="hname">{e(b['short_title'] if b.get('short_title') else b['title'])}</span>
   <span class="hmeta">{e(b.get('author', ''))} {hearts}</span>
 </a>"""
 
 
 def ghost_card(d):
-    return f"""<a class="house ghost" href="desk.html" title="Plant your next {e(d['en'])} book">
+    return f"""<a class="house ghost" href="add.html" title="Plant your next {e(d['en'])} book">
   {sprite('ghost-plot', 'empty plot', 'hs')}
   <span class="hname">下一本住这里</span>
   <span class="hmeta">your next book lives here</span>
@@ -242,6 +252,7 @@ def build_home(books, sprouts):
       <h1>菲比的读书小镇</h1>
       <p class="lede">每读完一本书，小镇就多一座房子。<br>One book, one little house. Let's build a town of 400.</p>
       <div class="bubble" id="bubble">…</div>
+      <p><a class="addbig" href="add.html">＋ 加一本书 · Add a book</a></p>
     </div>
   </div>
 </header>
@@ -259,7 +270,7 @@ def build_home(books, sprouts):
 <section class="howto">
   <h2>怎么盖房子 <small>How a house gets built</small></h2>
   <ol class="steps">
-    <li>{sprite('bunny-write', '', 'step-img')}<b>写下书名和笔记</b><span>Type a title + notes on the private Scan Desk</span></li>
+    <li>{sprite('bunny-write', '', 'step-img')}<b>写下书名和笔记</b><span>Tap ＋ Add a book. Notes stay in a private form</span></li>
     <li>{sprite('bunny-reading', '', 'step-img')}<b>小兔子去查资料</b><span>Claude searches the web, tidies and enriches your notes</span></li>
     <li>{sprite('bunny-cheer', '', 'step-img')}<b>新房子落成</b><span>A house with a mindmap, famous lines, 5 takeaways and 5 push-backs</span></li>
   </ol>
@@ -278,18 +289,61 @@ def build_home(books, sprouts):
 
 # ---------------------------------------------------------------- desk explainer (public)
 
-def build_desk_info():
+VAULT_FORM = "https://github.com/phoebefu6/phoebe-reading-vault/issues/new?template=book-scan.yml"
+SPROUT_FORM = "https://github.com/phoebefu6/book-scan-with-phoebe/issues/new?template=sprout.yml"
+
+
+def build_add_page():
+    opts = "".join(f'<option value="{e(d["zh"])}">{d["emoji"]} {e(d["zh"])} · {e(d["en"])}</option>'
+                   for d in CFG["districts"])
     body = f"""
 <main class="page narrow">
   <a class="back" href="index.html">← 回小镇 Back to town</a>
-  <section class="card center">
-    {sprite('bunny-write', 'bunny writing', 'mascot sm')}
-    <h1>扫书台在 Phoebe 的电脑上</h1>
-    <p>The Scan Desk runs only on Phoebe's Mac, so her notes stay private.<br>
-    这里只展示整理后的书页，笔记原文不上网。</p>
+  <section class="card addcard">
+    <div class="center">{sprite('bunny-write', 'bunny writing', 'mascot sm')}
+      <h1>加一本书 <small>Add a book</small></h1>
+      <p class="hint">写下书名，选个街区，然后选一个按钮。</p></div>
+    <form id="addf" onsubmit="return false">
+      <label for="t">📖 书名 <small>Book title</small></label>
+      <input id="t" type="text" required placeholder="比如：被讨厌的勇气" autocomplete="off">
+      <label for="a">✍️ 作者 <small>Author (optional)</small></label>
+      <input id="a" type="text" placeholder="不知道也没关系" autocomplete="off">
+      <label for="c">🏘️ 街区 <small>Category</small></label>
+      <select id="c">
+        <option value="">🐰 让小兔子决定 · let the bunny decide</option>
+        {opts}
+        <option value="__new">✨ 新街区… · a new category</option>
+      </select>
+      <input id="cn" type="text" placeholder="新街区的名字，比如：旅行与美食" hidden autocomplete="off">
+      <div class="addbtns">
+        <button class="btn" id="withnotes" type="button">📒 加书和笔记<small>Add with notes · 笔记私人保存</small></button>
+        <button class="btn mint" id="sprout" type="button">🌱 只是想读<small>Just want to read · 1 分钟出现</small></button>
+      </div>
+      <p class="hint">📒 opens a private form in Phoebe's vault (only she can open it). The house is built next time she tells Claude <b>scan</b>.<br>
+      🌱 opens the village's sprout form; the sprout appears in about a minute.</p>
+    </form>
   </section>
-</main>"""
-    (DOCS / "desk.html").write_text(shell("Scan Desk · 扫书台", body), encoding="utf-8")
+</main>
+<script>
+(function(){{
+  var $ = function(i){{ return document.getElementById(i); }};
+  $('c').onchange = function(){{ $('cn').hidden = $('c').value !== '__new'; if (!$('cn').hidden) $('cn').focus(); }};
+  function cat(){{ return $('c').value === '__new' ? $('cn').value.trim() : $('c').value; }}
+  function go(base, emoji, withAuthor){{
+    var t = $('t').value.trim();
+    if (!t) {{ $('t').focus(); $('t').classList.add('shake'); setTimeout(function(){{ $('t').classList.remove('shake'); }}, 500); return; }}
+    var q = '&title=' + encodeURIComponent(emoji + ' ' + t) + '&book=' + encodeURIComponent(t) + '&category=' + encodeURIComponent(cat());
+    if (withAuthor) q += '&author=' + encodeURIComponent($('a').value.trim());
+    window.open(base + q, '_blank', 'noopener');
+  }}
+  $('withnotes').onclick = function(){{ go({json.dumps(VAULT_FORM)}, '📚', true); }};
+  $('sprout').onclick = function(){{ go({json.dumps(SPROUT_FORM)}, '🌱', false); }};
+}})();
+</script>"""
+    (DOCS / "add.html").write_text(shell("Add a book · 加一本书", body), encoding="utf-8")
+    old = DOCS / "desk.html"
+    if old.exists():
+        old.unlink()
 
 
 # ---------------------------------------------------------------- book page
@@ -343,7 +397,7 @@ def build_book(b, books):
 <main class="page">
   <a class="back" href="../index.html#{d['id']}">← {d['emoji']} {e(d['zh'])} · {e(d['en'])}</a>
   <header class="bookhead card">
-    <div class="bh-art">{sprite(f"{d['sprite']}-{st}", b['title'], 'bh-house', '../')}
+    <div class="bh-art">{house_sprite(d, st, b['title'], 'bh-house', '../')}
       <p class="grow">{grow_msg}</p></div>
     <div class="bh-text">
       <p class="kicker">{d['emoji']} {e(d['zh'])} · {L('扫书于', 'scanned')} {e(b.get('scanned', ''))}</p>
@@ -431,7 +485,11 @@ def main():
     css = ROOT / "assets" / "village.css"
     (DOCS / "assets" / "village.css").write_text(css.read_text(encoding="utf-8"), encoding="utf-8")
     build_home(books, sprouts)
-    build_desk_info()
+    build_add_page()
+    keep = {f"{b['slug']}.html" for b in books}
+    for old in (DOCS / "books").glob("*.html"):
+        if old.name not in keep:
+            old.unlink()          # a book removed from books/ must not linger on the public site
     for b in books:
         build_book(b, books)
     (DOCS / ".nojekyll").write_text("")
