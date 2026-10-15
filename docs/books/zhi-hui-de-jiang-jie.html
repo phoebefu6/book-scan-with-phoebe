@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智慧的疆界：从图灵机到人工智能 · Book Scan with Phoebe</title>
+<meta name="description" content="以时间为主线，从图灵、香农、皮茨这些奠基人物讲起，经过符号主义、连接主义、行为主义三大学派的轮流登场和两次 AI 寒冬，一直讲到深度学习的复兴。它想消除人工智能的神秘感，也想教你**在热潮里判断一项技术到底走到了哪一步**。">
+<link rel="icon" href="../assets/sprites/bunny-hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/village.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.18.12/dist/browser/index.iife.min.js"></script>
+</head>
+<body>
+
+<main class="page">
+  <a class="back" href="../index.html#mind">← 🔭 思维科技园 · Mind &amp; Tech Park</a>
+  <header class="bookhead card">
+    <div class="bh-art"><img class="bh-house" src="../assets/sprites/house-mind-1.webp" alt="智慧的疆界：从图灵机到人工智能" loading="lazy">
+      <p class="grow">再写 2 条想法，房子长到第 2 层</p></div>
+    <div class="bh-text">
+      <p class="kicker">🔭 思维科技园 · 扫书于 2026-08-19</p>
+      <h1>智慧的疆界：从图灵机到人工智能</h1>
+      <p class="author">周志明</p>
+      <p class="intro">以时间为主线，从图灵、香农、皮茨这些奠基人物讲起，经过符号主义、连接主义、行为主义三大学派的轮流登场和两次 AI 寒冬，一直讲到深度学习的复兴。它想消除人工智能的神秘感，也想教你<strong>在热潮里判断一项技术到底走到了哪一步</strong>。</p>
+      <p class="intro-src"><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书 · 图书简介 ↗</a></p>
+      <div class="pills"><a class="pill" href="https://book.douban.com/subject/30379536/reviews" target="_blank" rel="noopener">豆瓣 Douban ↗</a><a class="pill" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书 WeRead ↗</a></div>
+    </div>
+  </header>
+
+  <nav class="jump">
+    <a href="#quotes">🌟 名句</a>
+    <a href="#take">🌿 5 个收获</a>
+    <a href="#push">🔥 5 个质疑</a>
+    <a href="#map">🗺️ 脑图</a>
+    <a href="#note">📒 笔记</a>
+    <a href="#mine">💭 我的想法</a>
+  </nav>
+
+  <section class="card"><h2>👤 关于作者</h2><p>周志明，软件架构师，畅销技术书《深入理解 Java 虚拟机》作者。本书是他用一年时间写成的人工智能科普，豆瓣读者评价很高，2024 年出了第 2 版。</p></section>
+
+  <section class="card" id="quotes">
+    <h2>🌟 让这本书出名的句子</h2>
+    <ol class="quotes"><li><blockquote>“如果人类……无法分辨与之对话的到底是人类还是机器，那即可认定机器存在智能。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 1072 人划过（图灵测试的表述） ↗</a></li><li><blockquote>“如果一个形式系统是不含矛盾的，那就不可能在该系统内部证明系统的不矛盾性。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 784 人划过（哥德尔不完备定理） ↗</a></li><li><blockquote>“我们学习专业技术时不应过于「势利」，不能只去学习技术和方法。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 629 人划过（节选） ↗</a></li><li><blockquote>“整个学派的核心思想其实可以概括为五个字：认知即计算。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 540 人划过（节选） ↗</a></li><li><blockquote>“……而不是为了让它飞得更像鸽子以至于能欺骗其他鸟类。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 528 人划过（节选） ↗</a></li><li><blockquote>“机器学习是在追求让人类不用再去思考和设计的可能。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书热门划线 · 468 人划过（节选） ↗</a></li><li><blockquote>“这是一部对人工智能充满敬畏之心的匠心之作。”</blockquote><a class="src" href="https://weread.qq.com/book-detail?type=1&amp;v=b9732f007168ac3cb976eca" target="_blank" rel="noopener">微信读书 · 图书简介 ↗</a></li></ol>
+  </section>
+
+  <section class="card mint" id="take">
+    <h2>🌿 值得带走的 5 点</h2>
+    <ol class="takes"><li><h3>AI 史不是一条上升曲线</h3><p>六十年里三个学派轮流上台，中间两次寒冬。<strong>每一次热潮都有人说「这次不一样」</strong>。知道历史，看今天的大模型热就多一分冷静。</p></li><li><h3>三个学派，三种对智能的想象</h3><p>- <strong>符号主义</strong>：智能是推理（心智） - <strong>连接主义</strong>：智能是神经网络（大脑） - <strong>行为主义</strong>：智能是与环境互动（行动） 今天的深度学习是连接主义的胜利，但另外两条路并没有消失。</p></li><li><h3>学技术也要学技术的来历</h3><p>作者提醒：不能只学方法，要知道方法是怎么被发现的、前人争论过什么、走过哪些弯路。<strong>理解来历，才能判断它的边界。</strong></p></li><li><h3>飞机不必像鸽子</h3><p>图灵测试要求机器「像人」，但人造飞机的目的是飞得快，不是骗过鸟。<strong>AI 的价值不在于像人，而在于解决问题。</strong>这能帮我们跳出「它到底有没有意识」的空转。</p></li><li><h3>历史线让技术书变得好读</h3><p>讲反向传播之前，先讲人物的故事。<strong>把难点藏在人物故事里</strong>，是一种可以迁移到讲课和写作中的手法。</p></li></ol>
+  </section>
+
+  <section class="card pinkc" id="push">
+    <h2>🔥 5 个值得质疑的观点</h2>
+    <ol class="pushes"><li><p class="claim"><span class="tag">书里说</span>深度学习没有理论基础、无法解释自己，因此有根本局限。</p>
+<div class="argue"><span class="tag pink">我们反驳</span><p>可解释性确实是难题，但「无法解释」不等于「不可靠」：很多医学药物我们也不完全理解机制，却通过大规模试验验证。<strong>用验证代替解释</strong>，是工程上可行的另一条路。这本书初版写于 2018 年，之后大模型的能力跃迁已经超出了当时多数人的预期。</p></div>
+<p class="who"><span class="src">【补充】Claude 的论证，非引文</span></p></li><li><p class="claim"><span class="tag">书里说</span>按学派讲 AI 史，能看清这门学科的全貌。</p>
+<div class="argue"><span class="tag pink">我们反驳</span><p>学派叙事好记，但真实的研究常常是<strong>混合的</strong>：今天的系统同时用神经网络、搜索和强化学习。把历史讲成三派争霸，容易让读者以为必须选边站。</p></div>
+<p class="who"><span class="src">【补充】Claude 的论证，非引文</span></p></li><li><p class="claim"><span class="tag">书里说</span>这是一本入门书，普通读者能读懂。</p>
+<div class="argue"><span class="tag pink">我们反驳</span><p>豆瓣有读者坦言，前半本讲人物故事看得津津有味，<strong>后半本讲技术时就读得很累、读不太懂了</strong>。「入门并不等于简单」，它对非技术读者的门槛比书名暗示的高。</p></div>
+<p class="who"><a class="src" href="https://m.douban.com/book/subject/37357392/reviews?from=subject" target="_blank" rel="noopener">豆瓣 · 《智慧的疆界》读者书评 ↗</a></p></li><li><p class="claim"><span class="tag">书里说</span>图灵测试是衡量机器智能的好标准。</p>
+<div class="argue"><span class="tag pink">我们反驳</span><p>今天的聊天机器人在很多对话里已经能骗过人，但很少有研究者因此认为它们具备人类那样的智能。<strong>图灵测试衡量的是「像不像」，不是「懂不懂」。</strong>书里也提到它的目标超过了人类需要，但还可以说得更彻底。</p></div>
+<p class="who"><span class="src">【补充】Claude 的论证，非引文</span></p></li><li><p class="claim"><span class="tag">书里说</span>回顾历史，就能判断技术热潮的真伪。</p>
+<div class="argue"><span class="tag pink">我们反驳</span><p>历史能提醒我们警惕，但也可能让人<strong>过度怀疑</strong>：2012 年之前不少人用「前两次寒冬」来看衰神经网络，结果错了。历史给的是概率，不是答案。</p></div>
+<p class="who"><span class="src">【补充】Claude 的论证，非引文</span></p></li></ol>
+  </section>
+
+  <section class="card" id="map">
+    <h2>🗺️ 脑图复习</h2>
+    <p class="hint">拖动、缩放，点圆点展开或收起。</p>
+    <div class="mmwrap"><svg id="mm"></svg></div>
+  </section>
+
+  <section class="card" id="note">
+    <h2>📒 整理后的笔记</h2>
+    <section class="nsec"><h3>一句话</h3><p>人工智能六十年是<strong>三个学派轮流上台、两次寒冬打断</strong>的往复；这本书真正想教的不是技术，而是怎么在热潮里判断一件事走到了哪。</p></section><section class="nsec"><h3>全书骨架</h3><ul><li><strong>源头</strong>：图灵（1936 图灵机 · 1950 图灵测试 · 学习机器）</li><li><strong>学派争鸣</strong>：符号主义（心智）· 连接主义（大脑）· 行为主义（行动）</li><li><strong>第三波高潮</strong>：深度学习 = 数据 + GPU + 反向传播</li><li><strong>共处问题</strong>：人和机器怎样相处</li></ul></section><section class="nsec"><h3>写法观察</h3><p>以历史线贯穿全书，技术难度刚刚好到能读下去。<strong>为什么历史线能让一本技术书变得好读？</strong>因为它把难点藏在了人物命运里，读者先关心人，才愿意关心公式。</p></section>
+  </section>
+
+  <section class="card mine" id="mine">
+    <h2>💭 我的想法 <small>0</small></h2>
+    <ul class="thoughts"><li class="empty">这里还空着。下次读到心动的句子，写一句自己的话，房子就会长高。</li></ul>
+  </section>
+  <nav class="pn"><a href="hai-shi-yao-xiang-xin.html">← 还是要相信</a><a href="tong-tou.html">通透 →</a></nav>
+</main>
+<script>
+(function(){
+  var md = "---\nmarkmap:\n  colorFreezeLevel: 2\n  initialExpandLevel: 2\n  maxWidth: 360\n---\n\n# 智慧的疆界 · 周志明\n\n## 源头：图灵\n- 1936 图灵机\n- 1950 图灵测试\n- 学习机器的设想\n\n## 三大学派\n### 符号主义（心智）\n- 认知即计算\n- 推理期 → 知识期 → 衰落\n### 连接主义（大脑）\n- M-P 神经元 → 感知机\n- 寒冬 → 反向传播\n### 行为主义（行动）\n- 控制论 · 机器人学\n\n## 第三波高潮\n- 数据 + GPU + 反向传播\n- 深度学习\n\n## 🌿 5 个收获\n- 不是上升曲线，是往复\n- 三种对智能的想象\n- 学技术也学来历\n- 飞机不必像鸽子\n- 历史线让技术变好读\n\n## 🔥 5 个质疑\n- 用验证代替解释\n- 真实研究是混合的\n- 后半本门槛不低\n- 图灵测试量的是像不像\n- 历史也会让人过度怀疑\n";
+  var M = window.markmap;
+  if (!md || !M || !M.Transformer) return;
+  var r = new M.Transformer().transform(md);
+  var opts = M.deriveOptions((r.frontmatter || {}).markmap);
+  var pal = ['#E58BA3', '#5FB37F', '#E8A15C', '#8C7BD8', '#4FA7B8', '#D9708C'];
+  opts.color = function (n) { var p = ((n.state && n.state.path) || '').split('.'); return pal[(parseInt(p[1] || '0', 10) || 0) % pal.length]; };
+  var mm = M.Markmap.create('#mm', opts, r.root);
+  // markmap can measure before CJK webfonts settle -> every node size [0,0] and the layout
+  // collapses into one overlapping line. setData() with no arg re-measures; then fit.
+  function refit() { try { Promise.resolve(mm.setData()).then(function () { mm.fit(); }); } catch (e) {} }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+  requestAnimationFrame(function () { requestAnimationFrame(refit); });
+  setTimeout(refit, 400);
+  window.addEventListener('resize', refit);
+})();
+</script>
+<footer class="foot">
+  <p>🐰 Book Scan with Phoebe · 菲比的读书小镇</p>
+  <p class="small">Notes stay private · 笔记原文不公开 · quotes are short and sourced · 引用简短并附来源</p>
+  <p class="small"><a href="https://phoebefu6.github.io/read-with-phoebe/">More book art → read-with-phoebe 读书图集</a></p>
+</footer>
+</body>
+</html>

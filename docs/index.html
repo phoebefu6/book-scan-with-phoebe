@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Scan with Phoebe · 菲比的读书小镇</title>
+<meta name="description" content="Phoebe 的读书小镇 · a cute village that grows one house per book">
+<link rel="icon" href="assets/sprites/bunny-hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/village.css">
+
+</head>
+<body>
+
+<header class="hero">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <div class="hero-in">
+    <img class="mascot" src="assets/sprites/bunny-hero.webp" alt="Reading bunny mascot" loading="lazy">
+    <div>
+      <p class="kicker">Book Scan with Phoebe</p>
+      <h1>菲比的读书小镇</h1>
+      <p class="lede">每读完一本书，小镇就多一座房子。<br>One book, one little house. Let's build a town of 400.</p>
+      <div class="bubble" id="bubble">…</div>
+    </div>
+  </div>
+</header>
+<main class="town">
+
+<section class="track" aria-label="progress to 400 books">
+  <div class="track-top">
+    <div class="count"><span class="big">10</span><span class="of">/ 400</span>
+      <span class="unit">座房子 houses</span></div>
+    <p class="next">再盖 <b>15</b> 座房子，<b>喷泉</b> 就会开张 · 15 more houses to open the Fountain</p>
+  </div>
+  <div class="bar"><div class="fill" style="width:16.67%"></div>
+    <ul class="marks"><li class="mark got" style="left:16.67%"><span class="dot">✓</span><span class="mlabel">面包房</span></li><li class="mark " style="left:33.33%"><span class="dot">25</span><span class="mlabel">喷泉</span></li><li class="mark " style="left:50.00%"><span class="dot">50</span><span class="mlabel">图书馆</span></li><li class="mark " style="left:66.67%"><span class="dot">100</span><span class="mlabel">市政厅</span></li><li class="mark " style="left:83.33%"><span class="dot">200</span><span class="mlabel">火车站</span></li><li class="mark " style="left:100.00%"><span class="dot">400</span><span class="mlabel">书之城堡</span></li></ul></div>
+</section>
+<section class="island plaza" id="plaza">
+  <header class="sign"><span class="semoji">⛲</span><h2>中心广场 <small>Town Plaza</small></h2>
+    <span class="scount">1 / 6 地标</span></header>
+  <div class="lms"><figure class="lm got">
+  <img class="ls" src="assets/sprites/lm-bakery.webp" alt="Bakery" loading="lazy">
+  <figcaption>面包房<br><small>Bakery · 开张啦 open</small></figcaption>
+</figure><figure class="lm locked">
+  <img class="ls" src="assets/sprites/lm-fountain.webp" alt="Fountain" loading="lazy">
+  <figcaption>喷泉<br><small>Fountain · 🔒 25</small></figcaption>
+</figure><figure class="lm locked">
+  <img class="ls" src="assets/sprites/lm-library.webp" alt="Library" loading="lazy">
+  <figcaption>图书馆<br><small>Library · 🔒 50</small></figcaption>
+</figure><figure class="lm locked">
+  <img class="ls" src="assets/sprites/lm-townhall.webp" alt="Town Hall" loading="lazy">
+  <figcaption>市政厅<br><small>Town Hall · 🔒 100</small></figcaption>
+</figure><figure class="lm locked">
+  <img class="ls" src="assets/sprites/lm-station.webp" alt="Train Station" loading="lazy">
+  <figcaption>火车站<br><small>Train Station · 🔒 200</small></figcaption>
+</figure><figure class="lm locked">
+  <img class="ls" src="assets/sprites/lm-castle.webp" alt="Castle of Books" loading="lazy">
+  <figcaption>书之城堡<br><small>Castle of Books · 🔒 400</small></figcaption>
+</figure></div>
+</section>
+<div class="walkway" aria-hidden="true"><img class="walker" src="assets/sprites/bunny-walk.webp" alt="" loading="lazy"></div>
+<div class="islands">
+<section class="island" id="life">
+  <header class="sign"><span class="semoji">🌸</span>
+    <h2>人生小街 <small>Life Lane</small></h2>
+    <span class="scount">4 座</span></header>
+  <div class="plots"><a class="house st2" href="books/hai-shi-yao-xiang-xin.html">
+  <img class="hs" src="assets/sprites/house-life-2.webp" alt="陈鲁豫：还是要相信" loading="lazy">
+  <span class="hname">还是要相信</span>
+  <span class="hmeta">陈鲁豫 <span class="tc" title="3 条想法 thoughts">💭 3</span></span>
+</a><a class="house st2" href="books/tong-tou.html">
+  <img class="hs" src="assets/sprites/house-life-2.webp" alt="通透（杨天真重磅新作）" loading="lazy">
+  <span class="hname">通透</span>
+  <span class="hmeta">杨天真 <span class="tc" title="3 条想法 thoughts">💭 3</span></span>
+</a><a class="house st2" href="books/jia-nu-li.html">
+  <img class="hs" src="assets/sprites/house-life-2.webp" alt="假努力：方向不对，一切白费" loading="lazy">
+  <span class="hname">假努力</span>
+  <span class="hmeta">滑洋 <span class="tc" title="2 条想法 thoughts">💭 2</span></span>
+</a><a class="house st1" href="books/yi-yi-jiao-lv.html">
+  <img class="hs" src="assets/sprites/house-life-1.webp" alt="面对「意义焦虑」：生活本身就是出口" loading="lazy">
+  <span class="hname">面对意义焦虑</span>
+  <span class="hmeta">江希希 </span>
+</a><a class="house ghost" href="desk.html" title="Plant your next Life Lane book">
+  <img class="hs" src="assets/sprites/ghost-plot.webp" alt="empty plot" loading="lazy">
+  <span class="hname">下一本住这里</span>
+  <span class="hmeta">your next book lives here</span>
+</a></div>
+</section><section class="island" id="work">
+  <header class="sign"><span class="semoji">💼</span>
+    <h2>成事广场 <small>Work Square</small></h2>
+    <span class="scount">2 座</span></header>
+  <div class="plots"><a class="house st1" href="books/cheng-shi.html">
+  <img class="hs" src="assets/sprites/house-work-1.webp" alt="成事（冯唐成事学开山之作）" loading="lazy">
+  <span class="hname">成事</span>
+  <span class="hmeta">冯唐 <span class="tc" title="1 条想法 thoughts">💭 1</span></span>
+</a><a class="house st2" href="books/xiang-ma-yi-yang-si-kao.html">
+  <img class="hs" src="assets/sprites/house-work-2.webp" alt="像马一样思考：一个非传统牛仔的人生经验、领导力和同理心" loading="lazy">
+  <span class="hname">像马一样思考</span>
+  <span class="hmeta">格兰特·古利赫 Grant Golliher <span class="tc" title="2 条想法 thoughts">💭 2</span></span>
+</a><a class="house ghost" href="desk.html" title="Plant your next Work Square book">
+  <img class="hs" src="assets/sprites/ghost-plot.webp" alt="empty plot" loading="lazy">
+  <span class="hname">下一本住这里</span>
+  <span class="hmeta">your next book lives here</span>
+</a></div>
+</section><section class="island" id="mind">
+  <header class="sign"><span class="semoji">🔭</span>
+    <h2>思维科技园 <small>Mind &amp; Tech Park</small></h2>
+    <span class="scount">3 座</span></header>
+  <div class="plots"><a class="house st1" href="books/hao-de-jue-ce.html">
+  <img class="hs" src="assets/sprites/house-mind-1.webp" alt="好的决策" loading="lazy">
+  <span class="hname">好的决策</span>
+  <span class="hmeta">夏栋 </span>
+</a><a class="house st1" href="books/shu-ju-zhi-li.html">
+  <img class="hs" src="assets/sprites/house-mind-1.webp" alt="一本书讲透数据治理：战略、方法、工具与实践" loading="lazy">
+  <span class="hname">一本书讲透数据治理</span>
+  <span class="hmeta">用友平台与数据智能团队 </span>
+</a><a class="house st1" href="books/zhi-hui-de-jiang-jie.html">
+  <img class="hs" src="assets/sprites/house-mind-1.webp" alt="智慧的疆界：从图灵机到人工智能" loading="lazy">
+  <span class="hname">智慧的疆界</span>
+  <span class="hmeta">周志明 </span>
+</a><a class="house ghost" href="desk.html" title="Plant your next Mind &amp; Tech Park book">
+  <img class="hs" src="assets/sprites/ghost-plot.webp" alt="empty plot" loading="lazy">
+  <span class="hname">下一本住这里</span>
+  <span class="hmeta">your next book lives here</span>
+</a></div>
+</section><section class="island" id="history">
+  <header class="sign"><span class="semoji">🏯</span>
+    <h2>历史山丘 <small>History Hill</small></h2>
+    <span class="scount">1 座</span></header>
+  <div class="plots"><a class="house st2" href="books/ming-chao-na-xie-shi.html">
+  <img class="hs" src="assets/sprites/house-history-2.webp" alt="明朝那些事儿（全集）" loading="lazy">
+  <span class="hname">明朝那些事儿</span>
+  <span class="hmeta">当年明月 <span class="tc" title="2 条想法 thoughts">💭 2</span></span>
+</a><a class="house ghost" href="desk.html" title="Plant your next History Hill book">
+  <img class="hs" src="assets/sprites/ghost-plot.webp" alt="empty plot" loading="lazy">
+  <span class="hname">下一本住这里</span>
+  <span class="hmeta">your next book lives here</span>
+</a></div>
+</section><section class="island" id="story">
+  <header class="sign"><span class="semoji">🍄</span>
+    <h2>故事森林 <small>Story Woods</small></h2>
+    <span class="scount">0 座</span></header>
+  <div class="plots"><a class="house ghost" href="desk.html" title="Plant your next Story Woods book">
+  <img class="hs" src="assets/sprites/ghost-plot.webp" alt="empty plot" loading="lazy">
+  <span class="hname">下一本住这里</span>
+  <span class="hmeta">your next book lives here</span>
+</a></div>
+</section>
+</div>
+<section class="howto">
+  <h2>怎么盖房子 <small>How a house gets built</small></h2>
+  <ol class="steps">
+    <li><img class="step-img" src="assets/sprites/bunny-write.webp" alt="" loading="lazy"><b>写下书名和笔记</b><span>Type a title + notes on the private Scan Desk</span></li>
+    <li><img class="step-img" src="assets/sprites/bunny-reading.webp" alt="" loading="lazy"><b>小兔子去查资料</b><span>Claude searches the web, tidies and enriches your notes</span></li>
+    <li><img class="step-img" src="assets/sprites/bunny-cheer.webp" alt="" loading="lazy"><b>新房子落成</b><span>A house with a mindmap, famous lines, 5 takeaways and 5 push-backs</span></li>
+  </ol>
+</section>
+</main>
+<script>
+(function(){
+  var msgs = [["Every 💭 you write makes a house taller.", "每写一条想法，房子就长高一点。"], ["Type any title on the Scan Desk and a sprout appears.", "在扫书台写下书名，就会冒出一棵小芽。"], ["Your next house already has a plot waiting.", "下一本书的空地已经留好啦。"], ["Small notes count. One sentence of your own is a brick.", "一句自己的话，就是一块砖。"], ["The bunny saved you a sunny spot.", "小兔子给你留了个向阳的位置。"]];
+  var el = document.getElementById('bubble'), i = Math.floor(Math.random()*msgs.length);
+  function show(){ var m = msgs[i % msgs.length]; el.innerHTML = m[1] + '<br><small>' + m[0] + '</small>'; i++; }
+  show(); setInterval(show, 6000);
+})();
+</script>
+<footer class="foot">
+  <p>🐰 Book Scan with Phoebe · 菲比的读书小镇</p>
+  <p class="small">Notes stay private · 笔记原文不公开 · quotes are short and sourced · 引用简短并附来源</p>
+  <p class="small"><a href="https://phoebefu6.github.io/read-with-phoebe/">More book art → read-with-phoebe 读书图集</a></p>
+</footer>
+</body>
+</html>

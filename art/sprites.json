@@ -1,0 +1,136 @@
+{
+ "style": "Cute chubby kawaii cartoon game asset, soft rounded fat puffy shapes like a squishy toy, gentle 3/4 isometric view, thick soft outline in warm dark brown (#5B4636), pastel palette built on light mint green (#CDEFD6, #9FDDB3) and light sakura pink (#FAD4DE, #F4A9BC) with cream (#FFF8EC) accents, soft cel shading, cozy and lovable, single subject centered with generous margin, isolated on a plain solid pure white background (#FFFFFF), no ground, no scenery, no text, no letters, no numbers, no signs with writing, no watermark.",
+ "items": [
+  {
+   "id": "bunny-hero",
+   "prompt": "Mascot character sheet front pose: a very round chubby white reading bunny, body almost a ball, long soft pink inner ears, rosy pink cheeks, tiny smile, big sparkly dark eyes, wearing a cozy light mint green knitted scarf, holding a small open pink book against its belly, waving one paw. Full body."
+  },
+  {
+   "id": "bunny-reading",
+   "ref": "bunny-hero",
+   "prompt": "The same chubby white bunny mascot from the reference (same pink ears, mint green scarf, same proportions) sitting on a small stack of three pastel books, reading an open book with a happy focused face. Full body."
+  },
+  {
+   "id": "bunny-cheer",
+   "ref": "bunny-hero",
+   "prompt": "The same chubby white bunny mascot from the reference (same pink ears, mint green scarf) jumping with joy, both paws up, little pink hearts and sparkles around it, holding a book high. Full body."
+  },
+  {
+   "id": "bunny-write",
+   "ref": "bunny-hero",
+   "prompt": "The same chubby white bunny mascot from the reference (same pink ears, mint green scarf) sitting and writing in a notebook with a big pink pencil, tongue slightly out in concentration. Full body."
+  },
+  {
+   "id": "bunny-walk",
+   "ref": "bunny-hero",
+   "prompt": "The same chubby white bunny mascot from the reference (same pink ears, mint green scarf) walking happily to the right carrying a little backpack full of books, side 3/4 view. Full body."
+  },
+  {
+   "id": "bunny-sleep",
+   "ref": "bunny-hero",
+   "prompt": "The same chubby white bunny mascot from the reference (same pink ears, mint green scarf) curled up asleep on an open giant book like a bed, tiny pink blanket. Full body."
+  },
+  {
+   "id": "house-life-1",
+   "prompt": "A tiny fat round cottage, one floor, pastel pink walls, rounded mint green roof like a gumdrop, one round window with warm light, a small round door. People and Life district style."
+  },
+  {
+   "id": "house-life-2",
+   "ref": "house-life-1",
+   "prompt": "The same pink cottage style as the reference but bigger: two puffy floors, mint green gumdrop roof, flower boxes with pink flowers under the windows, a tiny front garden. Same style."
+  },
+  {
+   "id": "house-life-3",
+   "ref": "house-life-1",
+   "prompt": "The same pink cottage style as the reference but grandest version: three puffy floors, mint green gumdrop roof with a chubby chimney puffing a heart-shaped smoke cloud, flower garden, little picket fence, a small tree. Same style."
+  },
+  {
+   "id": "house-work-1",
+   "prompt": "A tiny fat chubby little shop building, one floor, mint green walls, a closed puffy rounded pink roof like a soft pillow on top, striped pink and cream awning over the door, rounded windows, a tiny potted plant by the door. Work and Leadership district style."
+  },
+  {
+   "id": "house-work-2",
+   "ref": "house-work-1",
+   "prompt": "The same mint shop style as the reference but bigger: two puffy floors with a closed puffy rounded pink roof on top, striped pink awning, small balcony with plants, round clock face with no numbers. Same style."
+  },
+  {
+   "id": "house-work-3",
+   "ref": "house-work-1",
+   "prompt": "The same mint shop style as the reference but grandest: a wide, fat, three-floor chubby building (as wide as it is tall), closed puffy rounded pink pillow roof with a little flower garden on top, striped pink awnings on each floor, balconies with plants, chubby chimney with a heart-shaped smoke puff. Same style."
+  },
+  {
+   "id": "house-history-1",
+   "prompt": "A tiny fat round Chinese style pavilion house, one floor, pastel pink walls, puffy rounded mint green tiled roof with gently curled eaves, round moon door. History district style."
+  },
+  {
+   "id": "house-history-2",
+   "ref": "house-history-1",
+   "prompt": "The same chubby Chinese pavilion style as the reference but bigger: two puffy floors with layered curled mint roofs, pink lanterns with no writing, small courtyard wall. Same style."
+  },
+  {
+   "id": "house-history-3",
+   "ref": "house-history-1",
+   "prompt": "The same chubby Chinese pavilion style as the reference but grandest: a fat three-tier pagoda with mint curled roofs, pink lanterns, plum blossom tree beside it, little stone steps. Same style."
+  },
+  {
+   "id": "house-mind-1",
+   "prompt": "A tiny fat round observatory house, one floor, cream walls with pink trim, a puffy mint green dome roof with a small round telescope window. Mind and Technology district style."
+  },
+  {
+   "id": "house-mind-2",
+   "ref": "house-mind-1",
+   "prompt": "The same chubby observatory style as the reference but bigger: two puffy floors, mint dome with a cute telescope poking out, round windows, small satellite dish shaped like a flower. Same style."
+  },
+  {
+   "id": "house-mind-3",
+   "ref": "house-mind-1",
+   "prompt": "The same chubby observatory style as the reference but grandest: three puffy floors, big mint dome with telescope, tiny orbiting star and planet decorations, glowing round windows, garden of round bushes. Same style."
+  },
+  {
+   "id": "house-story-1",
+   "prompt": "A tiny fat mushroom house, one floor, cream stem with a round door and window, puffy pink mushroom cap with mint green spots. Story and Fiction district style."
+  },
+  {
+   "id": "house-story-2",
+   "ref": "house-story-1",
+   "prompt": "The same mushroom house style as the reference but bigger: two puffy floors, bigger pink cap with mint spots, a smaller mushroom annex, little lantern, ivy. Same style."
+  },
+  {
+   "id": "house-story-3",
+   "ref": "house-story-1",
+   "prompt": "The same mushroom house style as the reference but grandest: a tall chubby three-level mushroom tower, pink cap with mint spots, spiral staircase outside, fairy lights, small round garden. Same style."
+  },
+  {
+   "id": "sprout",
+   "prompt": "A small round mound of soft brown soil with a single chubby mint green sprout with two round leaves and a tiny pink bud, sparkle beside it. Tiny garden plot."
+  },
+  {
+   "id": "ghost-plot",
+   "prompt": "An empty small round grass plot with a cute wooden stake marker that has a blank pink heart-shaped sign with no writing, a few tiny flowers. Waiting for a house."
+  },
+  {
+   "id": "lm-bakery",
+   "prompt": "Landmark: a chubby fat round bakery building, pink walls, mint awning, giant puffy croissant and loaf shaped roof decoration, warm windows with cakes, no writing."
+  },
+  {
+   "id": "lm-fountain",
+   "prompt": "Landmark: a round chubby town fountain, cream stone basin, mint water arcs, a small bunny statue on top holding a book, pink flowers around the rim."
+  },
+  {
+   "id": "lm-library",
+   "prompt": "Landmark: a fat round library building shaped like a stack of giant books, pink and mint book spines as floors, round door, reading bench with a lamp, no writing."
+  },
+  {
+   "id": "lm-townhall",
+   "prompt": "Landmark: a chubby town hall, mint green walls, pink rounded roof with a round clock tower whose clock face has no numbers, big puffy steps, flower beds."
+  },
+  {
+   "id": "lm-station",
+   "prompt": "Landmark: a cute fat little train station with a chubby round pink steam train with mint wheels at the platform, puffy smoke clouds, no writing."
+  },
+  {
+   "id": "lm-castle",
+   "prompt": "Landmark: a magnificent but chubby fairy-tale castle made of stacked giant books, pink and mint towers with rounded cone roofs, heart shaped flags with no writing, sparkles, rainbow, the grand final goal."
+  }
+ ]
+}

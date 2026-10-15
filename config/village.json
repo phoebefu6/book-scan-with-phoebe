@@ -1,0 +1,19 @@
+{
+  "goal": 400,
+  "districts": [
+    {"id": "life",    "emoji": "🌸", "zh": "人生小街",   "en": "Life Lane",          "sprite": "house-life",    "about": "people, feelings, choices, memoir"},
+    {"id": "work",    "emoji": "💼", "zh": "成事广场",   "en": "Work Square",        "sprite": "house-work",    "about": "work, leadership, career, business"},
+    {"id": "mind",    "emoji": "🔭", "zh": "思维科技园", "en": "Mind & Tech Park",   "sprite": "house-mind",    "about": "thinking, decisions, science, AI, data"},
+    {"id": "history", "emoji": "🏯", "zh": "历史山丘",   "en": "History Hill",       "sprite": "house-history", "about": "history, biography of eras, culture"},
+    {"id": "story",   "emoji": "🍄", "zh": "故事森林",   "en": "Story Woods",        "sprite": "house-story",   "about": "novels, fiction, poetry"}
+  ],
+  "landmarks": [
+    {"at": 10,  "id": "lm-bakery",   "zh": "面包房",   "en": "Bakery"},
+    {"at": 25,  "id": "lm-fountain", "zh": "喷泉",     "en": "Fountain"},
+    {"at": 50,  "id": "lm-library",  "zh": "图书馆",   "en": "Library"},
+    {"at": 100, "id": "lm-townhall", "zh": "市政厅",   "en": "Town Hall"},
+    {"at": 200, "id": "lm-station",  "zh": "火车站",   "en": "Train Station"},
+    {"at": 400, "id": "lm-castle",   "zh": "书之城堡", "en": "Castle of Books"}
+  ],
+  "growth": {"stage2_at": 2, "stage3_at": 5}
+}

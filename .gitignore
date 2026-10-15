@@ -1,0 +1,8 @@
+.venv/
+art/raw/
+__pycache__/
+.DS_Store
+seeds/
+art/gen-log.jsonl
+art/gen-run.out
+art/prompts/

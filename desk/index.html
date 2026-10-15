@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan Desk · 扫书台</title>
+<link rel="icon" href="/village/assets/sprites/bunny-write.webp">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/village/assets/village.css">
+<style>
+  .desk { max-width: 980px; margin: 0 auto; padding: 16px 16px 40px; display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
+  .deskhead { display: flex; gap: 16px; align-items: center; max-width: 980px; margin: 0 auto; padding: 20px 16px 0; }
+  .deskhead img { width: 120px; animation: bob 3s ease-in-out infinite; }
+  .deskhead h1 { font-family: var(--font-cute-zh); font-weight: 400; color: var(--pink-700); font-size: 44px; margin: 0; text-shadow: 0 3px 0 var(--pink-200); }
+  .lock { display: inline-block; background: var(--mint-100); color: var(--mint-700); font-weight: 800; font-size: 13px; padding: 2px 10px; border-radius: 999px; }
+  label { display: block; font-family: var(--font-display); font-weight: 700; margin: 14px 0 6px; font-size: 17px; }
+  label small { font-family: var(--font-body); font-weight: 600; color: var(--ink-soft); font-size: 13px; }
+  input[type=text], textarea, select {
+    width: 100%; font: inherit; color: var(--ink); background: var(--cream); border: 3px solid var(--pink-200);
+    border-radius: var(--r-md); padding: 10px 14px; outline: none; transition: border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus, textarea:focus, select:focus { border-color: var(--pink-400); box-shadow: 0 0 0 4px var(--pink-100); }
+  textarea { min-height: 220px; resize: vertical; line-height: 1.7; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .thought { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+  .thought textarea { min-height: 52px; height: 52px; background: var(--pink-50); }
+  .share { flex: none; border: 3px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 10px; font: inherit; font-weight: 800; font-size: 13px; cursor: pointer; color: var(--ink-soft); white-space: nowrap; }
+  .share.on { background: var(--mint-200); border-color: var(--mint-400); color: var(--mint-700); }
+  .btn { font-family: var(--font-display); font-weight: 800; font-size: 18px; border: none; cursor: pointer; border-radius: 999px; padding: 10px 22px; color: #fff; background: var(--pink-400); box-shadow: 0 5px 0 var(--pink-700); transition: transform .1s, box-shadow .1s; }
+  .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--pink-700); }
+  .btn.mint { background: var(--mint-400); box-shadow: 0 5px 0 var(--mint-700); color: var(--ink); }
+  .btn.ghost { background: #fff; color: var(--ink); box-shadow: 0 4px 0 var(--line); border: 3px solid var(--line); font-size: 15px; padding: 6px 14px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(120px); background: #fff; border: 3px solid var(--mint-400); border-radius: var(--r-lg); padding: 12px 20px; box-shadow: var(--puff-mint); font-weight: 700; display: flex; gap: 12px; align-items: center; transition: transform .3s; z-index: 10; max-width: calc(100vw - 32px); }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast img { width: 64px; }
+  .side .card { padding: 18px; }
+  .side h2 { font-size: 20px; }
+  .q { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .q li { background: var(--pink-50); border-radius: var(--r-md); padding: 8px 12px; font-weight: 700; }
+  .q li small { display: block; color: var(--ink-soft); font-weight: 600; }
+  .q .done { background: var(--mint-50); }
+  .mini { height: 14px; background: var(--mint-100); border-radius: 999px; overflow: hidden; border: 2px solid var(--mint-200); }
+  .mini div { height: 100%; background: var(--pink-400); }
+  .tip { font-size: 14px; color: var(--ink-soft); }
+  .chars { font-size: 13px; color: var(--ink-soft); text-align: right; }
+  @media (max-width: 760px) { .desk { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; } .deskhead h1 { font-size: 34px; } .deskhead img { width: 90px; } }
+</style>
+</head>
+<body>
+<header class="deskhead">
+  <img src="/village/assets/sprites/bunny-write.webp" alt="">
+  <div>
+    <p class="kicker">Scan Desk · 只在你的电脑上 <span class="lock">🔒 private</span></p>
+    <h1>扫书台</h1>
+    <p class="tip">写下书名和笔记，小兔子会去查资料、整理、盖房子。<br>Type a title + your notes; the bunny does the research and builds the house.</p>
+  </div>
+</header>
+
+<div class="desk">
+  <main class="card">
+    <div class="row">
+      <div>
+        <label for="title">📖 书名 <small>Book title</small></label>
+        <input type="text" id="title" placeholder="比如：被讨厌的勇气" autocomplete="off">
+      </div>
+      <div>
+        <label for="author">✍️ 作者 <small>Author (optional, I'll look it up)</small></label>
+        <input type="text" id="author" placeholder="不知道也没关系" autocomplete="off">
+      </div>
+    </div>
+    <label for="district">🏘️ 住哪个街区 <small>District (optional, I'll guess)</small></label>
+    <select id="district"><option value="">让小兔子决定 · let the bunny decide</option></select>
+
+    <label for="notes">📒 我的笔记 <small>Notes: messy is fine, I'll tidy them. Stays private.</small></label>
+    <textarea id="notes" placeholder="随便写：读到了什么、记住了什么、哪里不同意……&#10;Anything: what you read, what stuck, what you disagree with…"></textarea>
+    <div class="chars" id="chars">0 字</div>
+
+    <label>💭 我自己的想法 <small>Your own sentences. These grow the house. Tap 🌍 to let one appear on the public page.</small></label>
+    <div id="thoughts"></div>
+    <button class="btn ghost" id="addT" type="button">＋ 再写一条想法 · add a thought</button>
+
+    <div class="actions">
+      <button class="btn" id="scan" type="button">🐰 存好，等小兔子扫描 · Save for scanning</button>
+      <button class="btn mint" id="sprout" type="button">🌱 只是想读 · Just plant a sprout</button>
+    </div>
+    <p class="tip">保存后，回到 Claude 说一句「scan it」就好。Then tell Claude: <b>scan it</b>.</p>
+  </main>
+
+  <aside class="side">
+    <section class="card">
+      <h2>🏠 小镇进度</h2>
+      <p><b id="n">0</b> / <span id="goal">400</span> 座房子</p>
+      <div class="mini"><div id="bar" style="width:0"></div></div>
+      <p class="tip" id="nextlm"></p>
+      <p><a href="/village/" target="_blank">看看小镇 · open the village ↗</a></p>
+    </section>
+    <section class="card">
+      <h2>📮 等待扫描</h2>
+      <ul class="q" id="queue"><li class="done">还没有 · nothing waiting</li></ul>
+    </section>
+    <section class="card">
+      <h2>🌱 小芽</h2>
+      <ul class="q" id="sprouts"><li class="done">还没有 · none yet</li></ul>
+    </section>
+  </aside>
+</div>
+
+<div class="toast" id="toast"><img src="/village/assets/sprites/bunny-cheer.webp" alt=""><span id="toastMsg"></span></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var LMS = [[10, '面包房'], [25, '喷泉'], [50, '图书馆'], [100, '市政厅'], [200, '火车站'], [400, '书之城堡']];
+  var DRAFT = 'scan-desk-draft', pendingDistrict = '';
+
+  function addThought(text, pub) {
+    var row = document.createElement('div'); row.className = 'thought';
+    var ta = document.createElement('textarea'); ta.placeholder = '用一句完整的话写下你自己的想法…'; ta.value = text || '';
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'share' + (pub ? ' on' : '');
+    b.textContent = pub ? '🌍 公开' : '🔒 私人';
+    b.title = 'Toggle: show this thought on the public page';
+    b.onclick = function () { var on = b.classList.toggle('on'); b.textContent = on ? '🌍 公开' : '🔒 私人'; saveDraft(); };
+    ta.oninput = saveDraft;
+    row.appendChild(ta); row.appendChild(b); $('thoughts').appendChild(row);
+    return ta;
+  }
+  function collect() {
+    return {
+      title: $('title').value, author: $('author').value, district: $('district').value, notes: $('notes').value,
+      thoughts: Array.prototype.map.call(document.querySelectorAll('.thought'), function (r) {
+        return { text: r.querySelector('textarea').value, public: r.querySelector('.share').classList.contains('on') };
+      })
+    };
+  }
+  function saveDraft() {
+    $('chars').textContent = $('notes').value.length + ' 字';
+    try { localStorage.setItem(DRAFT, JSON.stringify(collect())); } catch (e) {}
+  }
+  function loadDraft() {
+    var d = null;
+    try { d = JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (e) {}
+    if (d) { $('title').value = d.title || ''; $('author').value = d.author || ''; $('notes').value = d.notes || '';
+      (d.thoughts || []).forEach(function (t) { addThought(t.text, t.public); }); pendingDistrict = d.district || ''; }
+    if (!document.querySelector('.thought')) addThought('', false);
+    $('chars').textContent = $('notes').value.length + ' 字';
+  }
+  function clearForm() {
+    $('title').value = ''; $('author').value = ''; $('notes').value = ''; $('district').value = '';
+    $('thoughts').innerHTML = ''; addThought('', false);
+    try { localStorage.removeItem(DRAFT); } catch (e) {}
+    $('chars').textContent = '0 字';
+  }
+  function toast(msg, img) {
+    $('toastMsg').innerHTML = msg;
+    document.querySelector('#toast img').src = '/village/assets/sprites/' + (img || 'bunny-cheer') + '.webp';
+    $('toast').classList.add('show');
+    setTimeout(function () { $('toast').classList.remove('show'); }, 4200);
+  }
+  function post(url, body) {
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); });
+  }
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function refresh() {
+    fetch('/api/state').then(function (r) { return r.json(); }).then(function (s) {
+      var sel = $('district');
+      if (sel.options.length === 1) s.districts.forEach(function (d) {
+        var o = document.createElement('option'); o.value = d.id; o.textContent = d.emoji + ' ' + d.zh + ' · ' + d.en; sel.appendChild(o);
+      });
+      if (pendingDistrict) { sel.value = pendingDistrict; pendingDistrict = ''; }
+      var n = s.books.length; $('n').textContent = n; $('goal').textContent = s.goal;
+      $('bar').style.width = Math.max(2, n / s.goal * 100) + '%';
+      var nx = LMS.find(function (l) { return n < l[0]; });
+      $('nextlm').textContent = nx ? ('再盖 ' + (nx[0] - n) + ' 座，' + nx[1] + '就开张 🎉') : '城堡建成啦 🏰';
+      $('queue').innerHTML = s.queue.length ? s.queue.slice(0, 8).map(function (q) {
+        return '<li class="' + (q.status === 'scanned' ? 'done' : '') + '">' + esc(q.title) + '<small>' +
+          (q.status === 'scanned' ? '✅ 已盖好 built' : '⏳ 等你说 scan it') + ' · ' + esc(q.added) + '</small></li>';
+      }).join('') : '<li class="done">还没有 · nothing waiting</li>';
+      $('sprouts').innerHTML = s.sprouts.length ? s.sprouts.slice(-8).reverse().map(function (x) {
+        return '<li>🌱 ' + esc(x.title) + '</li>';
+      }).join('') : '<li class="done">还没有 · none yet</li>';
+    });
+  }
+  $('addT').onclick = function () { addThought('', false).focus(); };
+  ['title', 'author', 'notes', 'district'].forEach(function (id) { $(id).addEventListener('input', saveDraft); });
+  $('scan').onclick = function () {
+    if (!$('title').value.trim()) { $('title').focus(); return toast('先写个书名吧 · add a title first', 'bunny-reading'); }
+    post('/api/scan', collect()).then(function (r) {
+      if (!r.ok) return toast(esc(r.error), 'bunny-reading');
+      clearForm(); refresh();
+      toast('存好啦！回到 Claude 说 <b>scan it</b> 🐰<br><small>Saved privately. Tell Claude “scan it”.</small>');
+    }).catch(function () { toast('扫书台没连上，desk.py 还在运行吗？', 'bunny-sleep'); });
+  };
+  $('sprout').onclick = function () {
+    if (!$('title').value.trim()) { $('title').focus(); return toast('先写个书名吧 · add a title first', 'bunny-reading'); }
+    post('/api/sprout', { title: $('title').value, district: $('district').value }).then(function (r) {
+      if (!r.ok) return toast(esc(r.error), 'bunny-reading');
+      toast(r.result === 'already' ? '这棵小芽已经种过啦 🌱' : '种下一棵小芽 🌱<br><small>It shows up after the next publish.</small>');
+      $('title').value = ''; saveDraft(); refresh();
+    });
+  };
+  loadDraft(); refresh();
+})();
+</script>
+</body>
+</html>
