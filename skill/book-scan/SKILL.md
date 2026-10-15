@@ -38,6 +38,16 @@ on her Mac builds the house when she says "scan" (no API key, no cost). The loca
 
 ## "scan" — steps
 
+0. **WeRead check (every "scan"):** `python3 scripts/weread_village.py status`. It prints
+   (a) houses with **new WeRead 想法**: run `grow <slug>` to count them (house grows, private);
+   ask her which, if any, may go public and pass `--public 1,3`. Never publish one unasked, and
+   watch for very personal ones. (b) WeRead books with **no house yet**, newest first, finished
+   ones ✅: show her the top few and ask which to build. A house built from WeRead uses her
+   WeRead 想法 + the vault's `*-划线.md` as *private* notes material (highlight text never goes
+   public), sets `"weread_id"` in the seed, starts `thought_count` from form thoughts only, then
+   runs `grow <slug>` so WeRead thoughts are counted once and recorded in the private ledger
+   (`~/knowledge/03-inbox/book-scan/weread-ledger.json`). Pull fresh highlights first with
+   `weread_sync.py book <bookId>` if the vault has none.
 1. **Queue:** `python3 scripts/scan_queue.py list` (`book-scan` issues in the private vault, open OR closed, minus `scanned`;
    fields parsed: book, author, category, notes, public_thoughts, private_thoughts). Also check
    `~/knowledge/03-inbox/book-scan/` for Desk files with `status: waiting`. Nothing waiting → say so.
@@ -59,7 +69,8 @@ on her Mac builds the house when she says "scan" (no API key, no cost). The loca
    house-<id>-3` (~4 min, throttled), clean with `.venv/bin/python scripts/clean_sprites.py`, look
    at them, then remove `base`/`hue`/`auto` from the district. Follow `cute-village-art`.
 6. **Write `seeds/<slug>.py`** (copy any existing seed; slug is ascii pinyin/english) with
-   `BOOK` + `MINDMAP`, then `python3 scripts/new_book.py seeds/<slug>.py` (validates 5 + 5,
+   `BOOK` + `MINDMAP` (include `"weread_id"` when the book is on WeRead), then
+   `python3 scripts/new_book.py seeds/<slug>.py` (validates 5 + 5,
    ≤10 quotes, every quote sourced). `thoughts` = her public thoughts **verbatim**;
    `thought_count` = public + private full-sentence thoughts.
 7. **Private full note** → `~/knowledge/01-books/<title>/<title>-扫书.md` with vault provenance
@@ -71,6 +82,9 @@ on her Mac builds the house when she says "scan" (no API key, no cost). The loca
    `python3 scripts/scan_queue.py done <issue#> <slug>` (or set the Desk file to `status: scanned`).
 
 ## Sprouts and growth
+
+- Not automatic: WeRead changes reach the village only when she says "scan" (her choice;
+  a daily cloud sync would need her WeRead key stored in GitHub).
 
 - 🌱 sprouts come from the website form (automatic) or the Desk; `sprouts.json`, title only. Not counted toward 400.
 - When a sprouted title gets scanned, remove it from `sprouts.json`.
