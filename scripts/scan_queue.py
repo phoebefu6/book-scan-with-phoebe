@@ -32,10 +32,13 @@ def gh(*args):
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "list"
     if cmd == "list":
-        issues = json.loads(gh("issue", "list", "-R", VAULT, "--label", "book-scan", "--state", "open",
-                               "--json", "number,title,body,createdAt", "--limit", "50"))
-        print(json.dumps([{"number": i["number"], "created": i["createdAt"], **parse(i["body"])}
-                          for i in issues], ensure_ascii=False, indent=1))
+        # Open OR closed: closing the issue is not "cancel" (Phoebe closed one expecting it to
+        # submit). Waiting = labelled book-scan and not yet labelled scanned.
+        issues = json.loads(gh("issue", "list", "-R", VAULT, "--label", "book-scan", "--state", "all",
+                               "--json", "number,title,body,createdAt,state,labels", "--limit", "100"))
+        waiting = [i for i in issues if "scanned" not in {l["name"] for l in i["labels"]}]
+        print(json.dumps([{"number": i["number"], "state": i["state"], "created": i["createdAt"],
+                           **parse(i["body"])} for i in waiting], ensure_ascii=False, indent=1))
     elif cmd == "done":
         n, slug = sys.argv[2], sys.argv[3]
         gh("issue", "comment", n, "-R", VAULT, "-b", f"🏠 House built → {SITE}{slug}.html")

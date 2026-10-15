@@ -38,7 +38,7 @@ on her Mac builds the house when she says "scan" (no API key, no cost). The loca
 
 ## "scan" — steps
 
-1. **Queue:** `python3 scripts/scan_queue.py list` (open `book-scan` issues in the private vault,
+1. **Queue:** `python3 scripts/scan_queue.py list` (`book-scan` issues in the private vault, open OR closed, minus `scanned`;
    fields parsed: book, author, category, notes, public_thoughts, private_thoughts). Also check
    `~/knowledge/03-inbox/book-scan/` for Desk files with `status: waiting`. Nothing waiting → say so.
 2. **Identify the book.** WeRead first (key in `WEREAD_API_KEY`):
